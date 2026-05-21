@@ -1,4 +1,4 @@
-package io.github.devmarlon.hash;
+package io.github.devmarlon.simplehash.hash;
 
 public class Hash {
 
