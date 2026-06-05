@@ -10,7 +10,8 @@ public class InitTest {
     private static void start() {
         Hash haf = HashBuilder.of().configure((S) -> S
                 .addParams("Hello" , "main" , "case")).toHash();
-        System.out.print(haf.HashtoString());
+        System.out.println(haf.HashtoString());
+        System.out.println(haf.hashSize());
     }
 
 }
