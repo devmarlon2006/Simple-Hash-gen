@@ -26,9 +26,11 @@ public class HashBuilder {
         return this;
     }
 
+
     public HashBuilder configure(UnaryOperator<HashBuilder> configurator) {
         return configurator.apply(this);
     }
+
 
     public HashBuilder addParams(String... buildHash) {
         hashHasBuilded = false;
@@ -44,14 +46,14 @@ public class HashBuilder {
 
     private String generateHash(String[] par) {
         StringBuilder sb = new StringBuilder();
-        int arraySize = par.length;
+        int arraySize = getHashSize(0);
         for (int i = 0; i < arraySize; i++) {
             if (i != arraySize - 1) {
                 sb.append(par[i].toUpperCase()).append("-");
             }else {
                 sb.append(par[i].toUpperCase());
             }
-            updateStatus(true);
+            this.updateStatus(true);
         }
         return sb.toString();
     }
@@ -61,5 +63,9 @@ public class HashBuilder {
             throw new IllegalArgumentException("Hash não está criado");
         }
         return this.buildedHash;
+    }
+
+    public int getHashSize(int decrement) {
+        return this.rawParams.length == 0 ? 0 : this.rawParams.length - decrement;
     }
 }
